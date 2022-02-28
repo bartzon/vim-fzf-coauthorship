@@ -5,7 +5,7 @@ endfunction
 
 function! Coauthorship()
   call fzf#run({
-    \ 'source': 'git log --pretty="%an <%ae>" | sort | uniq',
+    \ 'source': 'git log --pretty="%an <%ae>" --since=30.days | sort | uniq',
     \ 'sink': function('AttributeCoauthorship'),
     \ 'options': "-i --multi --preview 'git log -1 --author {} --pretty=\"authored %h %ar:%n%n%B\"'"
     \ })
